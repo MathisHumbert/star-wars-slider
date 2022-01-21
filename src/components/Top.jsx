@@ -153,6 +153,8 @@ const Wrapper = styled.div`
   h1 {
     font-size: 223px;
     display: flex;
+
+    line-height: 0.75;
   }
 
   span {
