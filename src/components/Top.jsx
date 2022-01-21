@@ -1,11 +1,20 @@
 import styled from 'styled-components';
+import data from '../data';
 
-const Top = ({ id, logo, poster, date, title, text }) => {
+const Top = ({ id, logo, poster, date, title, text, index }) => {
+  let position = 'nextSlide';
+  if (id === index) {
+    position = 'activeSlide';
+  }
+  if (id === index - 1 || (index === 1 && id === data.length)) {
+    position = 'lastSlide';
+  }
+
   return (
-    <Wrapper className={id === 1 ? 'activeSlide' : 'nextSlide'}>
+    <Wrapper className={position}>
       <div className='left'>
         <div className='info'>
-          <img src={logo} alt='logo' />
+          <img src={logo} alt='logo' className='logo' />
           <h4>{title}</h4>
           <p>{text}</p>
         </div>
@@ -29,10 +38,65 @@ const Wrapper = styled.div`
   gap: 120px;
   color: rgba(255, 243, 138, 1);
 
+  &.activeSlide {
+    h4 {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    p {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .logo {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &.nextSlide {
+    h4 {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    p {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    .logo {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  &.lastSlide {
+    h4 {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    p {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    .logo {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+
   .left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  .logo {
+    transition: all 0.4s ease;
   }
 
   h4 {
@@ -59,10 +123,6 @@ const Wrapper = styled.div`
       height: 100%;
       object-fit: cover;
     }
-  }
-
-  &.nextSlide {
-    opacity: 0;
   }
 `;
 export default Top;

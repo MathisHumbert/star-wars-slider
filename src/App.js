@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import styled from 'styled-components';
 import Top from './components/Top';
@@ -5,24 +6,36 @@ import data from './data';
 let tempData = [1, 2, 3, 4, 5];
 
 function App() {
+  const [index, setIndex] = useState(1);
+
+  useEffect(() => {
+    const lastIndex = data.length;
+    if (index < 1) {
+      setIndex(lastIndex);
+    }
+    if (index > lastIndex) {
+      setIndex(1);
+    }
+  }, [index]);
+
   return (
     <Wrapper>
       <div className='top'>
         {data.map((item) => {
-          return <Top key={item.id} {...item} />;
+          return <Top key={item.id} {...item} index={index} />;
         })}
       </div>
       <div className='bottom'>
         <div className='left'>
-          <button>
+          <button onClick={() => setIndex(index - 1)}>
             <BsArrowLeft />
           </button>
-          <button>
+          <button onClick={() => setIndex(index + 1)}>
             <BsArrowRight />
           </button>
         </div>
         <div className='right'>
-          {tempData.map((item, index) => {
+          {tempData.map((item) => {
             return (
               <div key={item} className='circle-line-container'>
                 <div className='circle'></div>
