@@ -70,12 +70,12 @@ const Wrapper = styled.div`
   &.nextSlide {
     h4 {
       opacity: 0;
-      transform: translateX(50%);
+      transform: translateX(80px);
     }
 
     p {
       opacity: 0;
-      transform: translateX(50%);
+      transform: translateX(80px);
     }
 
     .logo {
@@ -85,7 +85,7 @@ const Wrapper = styled.div`
 
     span {
       opacity: 0;
-      transform: translateX(50%);
+      transform: translateX(80px);
     }
 
     .poster {
@@ -97,12 +97,12 @@ const Wrapper = styled.div`
   &.lastSlide {
     h4 {
       opacity: 0;
-      transform: translateX(-50%);
+      transform: translateX(-80px);
     }
 
     p {
       opacity: 0;
-      transform: translateX(-50%);
+      transform: translateX(-80px);
     }
 
     .logo {
@@ -112,7 +112,7 @@ const Wrapper = styled.div`
 
     span {
       opacity: 0;
-      transform: translateX(-50%);
+      transform: translateX(-80px);
     }
 
     .poster {
