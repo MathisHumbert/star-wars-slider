@@ -20,29 +20,31 @@ function App() {
 
   return (
     <Wrapper>
-      <div className='top'>
-        {data.map((item) => {
-          return <Top key={item.id} {...item} index={index} />;
-        })}
-      </div>
-      <div className='bottom'>
-        <div className='left'>
-          <button onClick={() => setIndex(index - 1)}>
-            <BsArrowLeft />
-          </button>
-          <button onClick={() => setIndex(index + 1)}>
-            <BsArrowRight />
-          </button>
-        </div>
-        <div className='right'>
-          {tempData.map((item) => {
-            return (
-              <div key={item} className='circle-line-container'>
-                <div className='circle'></div>
-                <div className='line'></div>
-              </div>
-            );
+      <div className='center'>
+        <div className='top'>
+          {data.map((item) => {
+            return <Top key={item.id} {...item} index={index} />;
           })}
+        </div>
+        <div className='bottom'>
+          <div className='left'>
+            <button onClick={() => setIndex(index - 1)}>
+              <BsArrowLeft />
+            </button>
+            <button onClick={() => setIndex(index + 1)}>
+              <BsArrowRight />
+            </button>
+          </div>
+          <div className='right'>
+            {tempData.map((item) => {
+              return (
+                <div key={item} className='circle-line-container'>
+                  <div className='circle'></div>
+                  <div className='line'></div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -50,12 +52,15 @@ function App() {
 }
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
+  .center {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    max-width: 1150px;
+    margin: 0 auto;
+  }
 
   .top {
-    border: 1px solid red;
     width: 100%;
     height: calc(100vh - 451px);
     position: relative;

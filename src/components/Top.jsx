@@ -18,10 +18,12 @@ const Top = ({ id, logo, poster, date, title, text, index }) => {
           <h4>{title}</h4>
           <p>{text}</p>
         </div>
-        <h1>{date}</h1>
+        <h1>
+          19<span>{date}</span>
+        </h1>
       </div>
       <div className='right'>
-        <img src={poster} alt='poster' />
+        <img src={poster} alt='poster' className='poster' />
       </div>
     </Wrapper>
   );
@@ -53,20 +55,40 @@ const Wrapper = styled.div`
       opacity: 1;
       transform: translateX(0);
     }
+
+    span {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .poster {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   &.nextSlide {
     h4 {
       opacity: 0;
-      transform: translateX(100%);
+      transform: translateX(50%);
     }
 
     p {
       opacity: 0;
-      transform: translateX(100%);
+      transform: translateX(50%);
     }
 
     .logo {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    span {
+      opacity: 0;
+      transform: translateX(50%);
+    }
+
+    .poster {
       opacity: 0;
       transform: translateX(100%);
     }
@@ -75,15 +97,25 @@ const Wrapper = styled.div`
   &.lastSlide {
     h4 {
       opacity: 0;
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
 
     p {
       opacity: 0;
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
 
     .logo {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    span {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+
+    .poster {
       opacity: 0;
       transform: translateX(-100%);
     }
@@ -95,8 +127,12 @@ const Wrapper = styled.div`
     justify-content: space-between;
   }
 
-  .logo {
-    transition: all 0.4s ease;
+  .logo,
+  h4,
+  p,
+  span,
+  .poster {
+    transition: all 0.5s ease-in-out;
   }
 
   h4 {
@@ -104,25 +140,36 @@ const Wrapper = styled.div`
     margin-bottom: 8px;
     font-size: 40px;
     line-height: 49px;
+    width: fit-content;
   }
 
   p {
     font-size: 20px;
     max-width: 340px;
     line-height: 30px;
+    width: fit-content;
   }
 
   h1 {
     font-size: 223px;
+    display: flex;
+  }
+
+  span {
+    display: inline-block;
   }
 
   .right {
-    img {
-      aspect-ratio: 2 / 3;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .poster {
+    aspect-ratio: 2 / 3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 export default Top;
