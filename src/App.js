@@ -1,12 +1,17 @@
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import styled from 'styled-components';
-let data = [1, 2, 3, 4, 5];
+import Top from './components/Top';
+import data from './data';
+let tempData = [1, 2, 3, 4, 5];
 
 function App() {
   return (
     <Wrapper>
-      <h1>star wars</h1>
-      <div className='top'></div>
+      <div className='top'>
+        {data.map((item) => {
+          return <Top key={item.id} {...item} />;
+        })}
+      </div>
       <div className='bottom'>
         <div className='left'>
           <button>
@@ -17,7 +22,7 @@ function App() {
           </button>
         </div>
         <div className='right'>
-          {data.map((item, index) => {
+          {tempData.map((item, index) => {
             return (
               <div key={item} className='circle-line-container'>
                 <div className='circle'></div>
@@ -32,6 +37,16 @@ function App() {
 }
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+
+  .top {
+    border: 1px solid red;
+    width: 100%;
+    height: calc(100vh - 451px);
+    position: relative;
+  }
   /* bottom */
   .bottom {
     width: 100%;
@@ -59,7 +74,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid red;
   }
 
   .circle-line-container {
